@@ -326,6 +326,32 @@ def evaluar_candidato(fila, location):
         and location.get("id") is not None
     )
 
+
+    # Cambios de nombre confirmados en la web oficial de NH.
+    # Son excepciones documentadas, no reglas generales.
+
+    NOMBRES_HISTORICOS = {
+        "NH SUR": "NH Madrid Atocha",
+        "NH SANVY": "NH Collection Madrid Colón"
+    }
+
+    nombre_oficial_original = fila["denominacion"].strip().upper()
+
+    nombre_actual_confirmado = NOMBRES_HISTORICOS.get(
+        nombre_oficial_original
+    )
+
+    if nombre_actual_confirmado:
+        if (
+            normalizar(nombre_api)
+            == normalizar(nombre_actual_confirmado)
+            and postal_coincide
+            and es_alojamiento
+            and location.get("id") is not None
+        ):
+            valido = True
+
+
     return {
         "location_id": location.get("id"),
         "nombre_tripadvisor": nombre_api,

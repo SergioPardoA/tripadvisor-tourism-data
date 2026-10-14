@@ -28,7 +28,7 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 # 0 = comprobar todo sin consultar Tripadvisor.
 # Más adelante podremos poner 3, 5 o 10.
-MAX_NEW_CALLS = 16
+MAX_NEW_CALLS = 0
 
 
 # ==================================================
